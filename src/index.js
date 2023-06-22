@@ -5,8 +5,34 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 function Greeting() {
-  return <h2>My First Component</h2>;
+  return (
+    <div>
+      <Person />
+      <Messagge />
+    </div>
+  );
 }
+
+const Person = () => <h2>john doe</h2>;
+const Message = () => {
+  return <p>this is my message</p>;
+};
+
+// function Greeting() {
+//   return (
+//     <>
+//       <div>
+//         <ul>
+//           <il>
+//             <a href="#">hello world</a>
+//           </il>
+//         </ul>
+//       </div>
+
+//     </>
+//   );
+// }
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Greeting />);
 
