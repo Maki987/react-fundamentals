@@ -4,16 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const firstBook = {
-  author: 'Alex Michaelides',
-  title: 'The Fury',
-  img: './images/boook-1.jpg',
-};
-const secondBook = {
-  author: 'Lucy Score',
-  title: 'Things We Never Got Over',
-  img: 'https://m.media-amazon.com/images/I/419Q1FpTrzL._SX311_BO1,204,203,200_.jpg',
-};
+const books = [
+  {
+    author: 'Alex Michaelides',
+    title: 'The Fury',
+    img: './images/boook-1.jpg',
+  },
+  {
+    author: 'Lucy Score',
+    title: 'Things We Never Got Over',
+    img: 'https://m.media-amazon.com/images/I/419Q1FpTrzL._SX311_BO1,204,203,200_.jpg',
+  },
+];
 
 const img = './images/book-1.jpg';
 const title = 'The Fury';
@@ -22,19 +24,22 @@ const author = 'Alex Michaelides';
 function BookList() {
   return (
     <section className="booklist">
-      <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
-      <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
+      {books.map((book) => {
+        const { img, title, author } = book;
+        return <Book img={img} title={title} author={author} />;
+      })}
     </section>
   );
 }
 
 const Book = (props) => {
   console.log(props);
+  const { img, title, author, children } = props;
   return (
     <article className="book">
-      <img src={props.img} alt={props.title} />
-      <h2>{props.title}</h2>
-      <h4>{props.author}</h4>
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4> {children}
     </article>
   );
 };
