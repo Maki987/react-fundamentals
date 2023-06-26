@@ -4,37 +4,33 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function Greeting() {
+function BookList() {
   return (
-    <div>
-      <Person />
-      <Messagge />
-    </div>
+    <section>
+      <Book />
+    </section>
   );
 }
 
-const Person = () => <h2>john doe</h2>;
-const Message = () => {
-  return <p>this is my message</p>;
+const Book = () => {
+  return (
+    <article>
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  );
 };
 
-// function Greeting() {
-//   return (
-//     <>
-//       <div>
-//         <ul>
-//           <il>
-//             <a href="#">hello world</a>
-//           </il>
-//         </ul>
-//       </div>
-
-//     </>
-//   );
-// }
+const Image = () => <img src="https://m.media-amazon.com/images/I/81nFlBNhrvL._AC_UL320_.jpg" alt="The Fury" />;
+const Title = () => {
+  return <h2>Book Title</h2>;
+};
+const Author = () => <h4>Author</h4>;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Greeting />);
+
+root.render(<BookList />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
