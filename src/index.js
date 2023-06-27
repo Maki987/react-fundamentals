@@ -9,11 +9,13 @@ const books = [
     author: 'Alex Michaelides',
     title: 'The Fury',
     img: './images/boook-1.jpg',
+    id: 1,
   },
   {
     author: 'Lucy Score',
     title: 'Things We Never Got Over',
     img: 'https://m.media-amazon.com/images/I/419Q1FpTrzL._SX311_BO1,204,203,200_.jpg',
+    id: 2,
   },
 ];
 
@@ -25,8 +27,7 @@ function BookList() {
   return (
     <section className="booklist">
       {books.map((book) => {
-        const { img, title, author } = book;
-        return <Book img={img} title={title} author={author} />;
+        return <Book {...book} key={book.id} />;
       })}
     </section>
   );
