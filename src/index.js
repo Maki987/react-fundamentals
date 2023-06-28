@@ -24,11 +24,15 @@ const title = 'The Fury';
 const author = 'Alex Michaelides';
 
 function BookList() {
+  const someValue = 'shakeAndBake';
+  const displayValue = () => {
+    console.log(someValue);
+  };
   return (
     <section className="booklist">
       <EventExamples />
       {books.map((book) => {
-        return <Book {...book} key={book.id} />;
+        return <Book {...book} key={book.id} displayValue={displayValue} />;
       })}
     </section>
   );
@@ -36,12 +40,13 @@ function BookList() {
 
 const Book = (props) => {
   console.log(props);
-  const { img, title, author, children } = props;
+  const { img, title, author, children, displayValue } = props;
   return (
     <article className="book">
       <img src={img} alt={title} />
       <h2>{title}</h2>
       <h4>{author}</h4> {children}
+      <button onClick={displayValue}>click me</button>
     </article>
   );
 };
@@ -66,7 +71,9 @@ const EventExamples = () => {
         <h2>Typical Form</h2>
         <input type="text" name="product" onChange={handleFormInput} style={{ margin: '1rem 0' }} />
         <div>
-          <button type="submit">submit</button>
+          <button onClick={() => console.log('click me')} type="submit">
+            submit
+          </button>
         </div>
       </form>
     </section>
@@ -85,6 +92,21 @@ const Author = () => {
   };
   return <h4 style={inlineHeadingStyles}>Jordan Moore</h4>;
 };
+
+const people = [
+  {
+    name: 'peter',
+    job: 'developer',
+    age: 24,
+  },
+  { name: 'ann', job: 'designer', age: 25 },
+  { name: 'bob', job: 'tester', age: 35 },
+];
+
+//const joungPeople = people.filter((person) => person.age < 35);
+/*find - return single instance, returns first match */
+const joungPeople = people.find((person) => person.age < 35);
+console.log(joungPeople);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
