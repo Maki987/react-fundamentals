@@ -26,6 +26,7 @@ const author = 'Alex Michaelides';
 function BookList() {
   return (
     <section className="booklist">
+      <EventExamples />
       {books.map((book) => {
         return <Book {...book} key={book.id} />;
       })}
@@ -42,6 +43,33 @@ const Book = (props) => {
       <h2>{title}</h2>
       <h4>{author}</h4> {children}
     </article>
+  );
+};
+
+const EventExamples = () => {
+  const handleFormInput = (e) => {
+    console.log(e.target);
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log('handle form input');
+  };
+  const handleButtonClick = () => {
+    alert('handle form input');
+  };
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  };
+  return (
+    <section>
+      <form onSubmit={handleFormSubmission}>
+        <h2>Typical Form</h2>
+        <input type="text" name="product" onChange={handleFormInput} style={{ margin: '1rem 0' }} />
+        <div>
+          <button type="submit">submit</button>
+        </div>
+      </form>
+    </section>
   );
 };
 
